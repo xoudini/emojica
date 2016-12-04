@@ -23,7 +23,7 @@
 import UIKit
 import Emojica
 
-class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Initialization
     let emojica = Emojica()
