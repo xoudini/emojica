@@ -143,26 +143,39 @@ The same applies for `UITextField`, although you must yourself implement the obs
 
 > The below image sets are tested, but other image sets may work just as well.
 
-| Set           | Version   | Notes                   |
-| ------------- | --------- | ----------------------- |
-| [Twemoji]     | 2.2       | _[Prepare][1]._            |
-| [EmojiOne]    | 2.2.7     | _Missing code points._  |
+| Set           | Version   | Notes                               |
+| ------------- | --------- | ----------------------------------- |
+| [Twemoji]     | 2.2       | _[Prepare](#preparations)_          |
+| [EmojiOne]    | 2.2.7     | _Missing code points_<sup>1</sup>   |
 
 [Twemoji]: https://github.com/twitter/twemoji
 [EmojiOne]: https://github.com/Ranks/emojione
 
-[1]: #preparations
-
+<sup>
+1. U+2640, U+2642 and U+2695 and sequences containing these characters are unsupported.
+</sup>
 
 
 
 ## Preparations
 
-Some image sets may have to be slightly modified before usage.
-
-> This section will be expanded shortly.
+> __WARNING__: Running the script __will__ overwrite the image names, so __do not run the script over a unique image set!__
 
 
+Some image sets may have to be slightly modified before usage. Check the table in 
+[Compatible image sets](#compatible-image-sets) if you're using a set marked _Prepare_, and if you are,
+follow these instructions:
+
+#### 1. Copy/move the contained file `rename.sh` into the folder containing your image set.
+#### 2. Open your preferred terminal.
+#### 3. Navigate into the directory:
+```bash
+$ cd /Path/To/Your/ImageSet
+```
+#### 4. Run the script:
+```bash
+$ sh rename.sh
+```
 
 
 ## Contact
