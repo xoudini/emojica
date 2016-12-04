@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bh7-q7-r3N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EmojicaExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D22-qR-uDN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7N-fe-Rl8">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Set:" id="Nl0-uc-jCF">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="ImageSet" id="AbO-gt-jGm">
+                                        <connections>
+                                            <action selector="imageSetPressed:" destination="BYZ-38-t0r" id="LLH-Wz-atl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Apy-et-j0F"/>
+                                    <barButtonItem enabled="NO" title="Convert" id="tbd-cW-sph">
+                                        <color key="tintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="Up5-SF-Dxg">
+                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="nru-ty-QhC">
+                                            <rect key="frame" x="310" y="7" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="stateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Ya-gz-ZyN"/>
+                                            </connections>
+                                        </switch>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="D22-qR-uDN" secondAttribute="trailing" id="1Sp-7V-zYD"/>
+                            <constraint firstItem="w7N-fe-Rl8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F0Z-dp-aZP"/>
+                            <constraint firstItem="D22-qR-uDN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SrE-m7-zvj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w7N-fe-Rl8" secondAttribute="bottom" id="Ybc-vM-x9t"/>
+                            <constraint firstItem="D22-qR-uDN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yck-9e-XZT"/>
+                            <constraint firstItem="w7N-fe-Rl8" firstAttribute="top" secondItem="D22-qR-uDN" secondAttribute="bottom" id="ZFO-hQ-wtY"/>
+                            <constraint firstAttribute="trailing" secondItem="w7N-fe-Rl8" secondAttribute="trailing" id="btD-Ee-zDE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9NA-nD-ys1"/>
+                    <connections>
+                        <outlet property="bottom" destination="Ybc-vM-x9t" id="cOl-lc-f6k"/>
+                        <outlet property="imageSet" destination="AbO-gt-jGm" id="BrR-YP-dRX"/>
+                        <outlet property="state" destination="nru-ty-QhC" id="yNg-bH-58B"/>
+                        <outlet property="textView" destination="D22-qR-uDN" id="PeD-co-0Ux"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="792.95352323838085"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TGx-MM-HhX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bh7-q7-r3N" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nif-eA-gly">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hMj-vy-TxQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EnI-Qf-s4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="792.95352323838085"/>
+        </scene>
+    </scenes>
+</document>
