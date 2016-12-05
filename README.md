@@ -4,13 +4,30 @@
 Emojica – a Swift framework for emoji-related matters.
 
 
+
+## Requirements
+
++ Xcode 8.1
++ iOS 10.0+
+   *  _Lower versions haven't been tested properly, and the framework may run without issue on a lower version._
+
+
+
 ## Installation
 
 At the moment, Emojica can only be installed manually.
 
 ###   Manual installation
 
-> This section will be expanded shortly.
+#### 1. Clone the repository, and drag `Emojica.xcodeproj` into your project hierarchy in Xcode.
+#### 2. Select your project, then select your application's target under _Targets_.
+#### 3. Under the _General_ tab, click the _+_ under _Embedded Binaries_.
+#### 4. Select `Emojica.frameworkiOS` and finish by pressing _Add_.
+
+> If Xcode gives you a `No such module 'Emojica'` compiler error at your `import` statement, just 
+build your application (or the framework) once. Also, each time you Clean (⇧⌘K) the project Xcode 
+will give you the same error, and the solution is the same.
+
 
 
 ## Usage
@@ -97,7 +114,7 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
 ### Convert string
 
 ```swift
-let sample: String = "Sample text 😎"
+let sample: String = "Sample text 😎 "
 
 let converted: NSAttributedString = emojica.convert(string: sample)
 ```
@@ -117,7 +134,7 @@ let textView = UITextView()
 
 ...
 
-let flag: String = "🇫🇮"
+let flag: String = "🇫🇮 "
 
 textView.attributedText = emojica.convert(string: flag)
 ```
@@ -133,9 +150,8 @@ func textViewDidChange(_ textView: UITextView) {
 }
 ```
 
-The same applies for `UITextField`, although you must yourself implement the observer for the notification
+> The same applies for `UITextField`, although you must yourself implement the observer for the notification
 `UITextFieldTextDidChange`, since `UITextFieldDelegate` doesn't provide the method by default.
-
 
 
 
@@ -178,11 +194,14 @@ $ sh rename.sh
 ```
 
 
+
 ## Contact
 
 You can find me on Twitter at [@xoudini](https://twitter.com/xoudini), 
 or send me electronic mail at [main@xoudini.com](mailto:main@xoudini.com).
 
+Feedback and questions are welcome, create an [__Issue__](https://github.com/xoudini/emojica/issues)
+for bugs or other problems.
 
 
 
