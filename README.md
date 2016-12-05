@@ -53,7 +53,7 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
    emojica.font = UIFont.systemFont(ofSize: 17.0)
    ```
 
-   If no font is set, the system font is used.
+ If no font is set, the system font is used.
    
 
 * __Set size__:
@@ -62,23 +62,23 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
    emojica.pointSize = 17.0
    ```
    
-   If you're satisfied with the default font, you can just set the size.
-   The value for `pointSize` is 17.0 by default.
+ If you're satisfied with the default font, you can just set the size.
+ The value for `pointSize` is 17.0 by default.
    
    
 * __Set minimum code point width__:
 
-   > __NOTE__: Use this only when using a custom image set that isn't handled by Emojica.
+ > __NOTE__: Use this only when using a custom image set that [isn't handled by Emojica](#compatible-image-sets).
 
    ```swift
    emojica.minimumCodePointWidth = 4
    ```
    
-   A value between 0 and 8 that sets the minimum width for code point strings in order to correctly
-   find the images for the custom emoji. The character `0` is used for padding.
-   
-   To find a suitable value, find the image for e.g. © (`U+00A9 COPYRIGHT SIGN`), and use the length
-   of that image's name – `a9.png` has a width of 2, `00a9.png` has a width of 4, etc.
+ A value between 0 and 8 that sets the minimum width for code point strings in order to correctly
+ find the images for the custom emoji. The character `0` is used for padding.
+
+ To find a suitable value, find the image for e.g. © (`U+00A9 COPYRIGHT SIGN`), and use the length
+ of that image's name – `a9.png` has a width of 2, `00a9.png` has a width of 4, etc.
    
    
 * __Set image set used in the project__:
@@ -87,7 +87,7 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
    emojica.imageSet = .default
    ```
    
-   Automatically configures code point width based on the image set. 
+ Automatically configures code point width based on the image set. 
    
    
 * __Disable modifier symbols__:
@@ -96,19 +96,19 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
    emojica.useModifiers = false
    ```
    
-   Strips out all [modifier symbols](http://unicode.org/reports/tr51/#Emoji_Modifiers_Table) from
-   complete modifier sequences.
+ Strips out all [modifier symbols](http://unicode.org/reports/tr51/#Emoji_Modifiers_Table) from
+ complete modifier sequences.
    
    
 * __Enable emoji to be reverted__:
 
-   > __NOTE__: Keep the instance non-revertible if the original strings aren't needed after conversion.
+ > __NOTE__: Keep the instance non-revertible if the original strings aren't needed after conversion.
 
    ```swift
    emojica.revertible = true
    ```
    
-   Enables strings with custom emoji to be reverted to original state.
+ Enables strings with custom emoji to be reverted to original state.
    
    
 ### Convert string
@@ -155,9 +155,17 @@ func textViewDidChange(_ textView: UITextView) {
 
 
 
-## Compatible image sets
+## Example Project
 
-> The below image sets are tested, but other image sets may work just as well.
+The example `EmojicaExample.xcodeproj` is set up but __does not contain images__. To test the project,
+add your emoji images to the `Images` group and __Run__.
+
+
+
+## Compatible Image Sets
+
+> The below image sets are tested, but other image sets may work just as well. If you have an image set that
+should be added to Emojica, please create an [__Issue__](https://github.com/xoudini/emojica/issues).
 
 | Set           | Version   | Notes                               |
 | ------------- | --------- | ----------------------------------- |
@@ -179,17 +187,17 @@ func textViewDidChange(_ textView: UITextView) {
 
 
 Some image sets may have to be slightly modified before usage. Check the table in 
-[Compatible image sets](#compatible-image-sets) if you're using a set marked _Prepare_, and if you are,
+[Compatible Image Sets](#compatible-image-sets) if you're using a set marked _Prepare_, and if you are,
 follow these instructions:
 
 #### 1. Copy/move the contained file `rename.sh` into the folder containing your image set.
 #### 2. Open your preferred terminal.
 #### 3. Navigate into the directory:
-```bash
+```sh
 $ cd /Path/To/Your/ImageSet
 ```
 #### 4. Run the script:
-```bash
+```sh
 $ sh rename.sh
 ```
 
@@ -201,7 +209,7 @@ You can find me on Twitter at [@xoudini](https://twitter.com/xoudini),
 or send me electronic mail at [main@xoudini.com](mailto:main@xoudini.com).
 
 Feedback and questions are welcome, create an [__Issue__](https://github.com/xoudini/emojica/issues)
-for bugs or other problems.
+for bugs, problems and feature requests.
 
 
 
