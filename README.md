@@ -3,7 +3,7 @@
 
 Emojica – a Swift framework for emoji-related matters.
 
-
+![gif](https://raw.githubusercontent.com/xoudini/emojica/images/demo.gif)
 
 ## Requirements
 
