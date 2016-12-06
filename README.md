@@ -165,13 +165,6 @@ func textViewDidChange(_ textView: UITextView) {
 
 
 
-## Example Project
-
-The example `EmojicaExample.xcodeproj` is set up but __does not contain images__. To test the project,
-add your emoji images to the `Images` group and __Run__.
-
-
-
 ## Compatible Image Sets
 
 > The below image sets are tested, but other image sets may work just as well. If you have an image set that
@@ -181,13 +174,22 @@ should be added to Emojica, please create an [__Issue__](https://github.com/xoud
 | ------------- | --------- | ----------------------------------- |
 | [Twemoji]     | 2.2       | _[Prepare](#preparations)_          |
 | [EmojiOne]    | 2.2.7     | _Missing code points_<sup>1</sup>   |
+| [Noto Emoji]  | 1.05      | _[Prepare](#preparations)_          |
 
 [Twemoji]: https://github.com/twitter/twemoji
 [EmojiOne]: https://github.com/Ranks/emojione
+[Noto Emoji]: https://github.com/googlei18n/noto-emoji
 
 <sup>
 1. U+2640, U+2642 and U+2695 and sequences containing these characters are unsupported.
 </sup>
+
+
+
+## Example Project
+
+The example `EmojicaExample.xcodeproj` is set up but __does not contain images__. To test the project,
+add your emoji images to the `Images` group and __Run__.
 
 
 
