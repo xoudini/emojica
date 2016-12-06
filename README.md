@@ -89,8 +89,19 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
 
  To find a suitable value, find the image for e.g. © (`U+00A9 COPYRIGHT SIGN`), and use the length
  of that image's name – `a9.png` has a width of 2, `00a9.png` has a width of 4, etc.
-   
+ 
+ 
+* __Set separator__:
+
+ > __NOTE__: Use this only when using a custom image set that [isn't handled by Emojica](#compatible-image-sets).
+ 
+ ```swift
+ emojica.separator = "~"
+ ```
    
+ The separator used in the image names of combined code points.
+ 
+ 
 * __Set image set used in the project__:
 
    ```swift     
