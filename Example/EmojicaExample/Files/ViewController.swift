@@ -133,7 +133,7 @@ extension ViewController {
     
     func sheet() {
         let sheet = UIAlertController.init(title: nil, message: "Select Image Set", preferredStyle: .actionSheet)
-        let imageSets = [Emojica.ImageSet.default, Emojica.ImageSet.twemoji, Emojica.ImageSet.emojione]
+        let imageSets = [Emojica.ImageSet.default, Emojica.ImageSet.twemoji, Emojica.ImageSet.emojione, Emojica.ImageSet.noto]
         for imageSet in imageSets {
             let action = UIAlertAction(title: imageSet.rawValue, style: .default) { _ in
                 self.set(imageSet: imageSet)

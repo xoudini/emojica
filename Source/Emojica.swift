@@ -38,6 +38,7 @@ public final class Emojica {
     private var _font: UIFont?
     private var _pointSize: CGFloat = 17.0
     private var _minimumCodePointWidth: UInt = 0
+    private var _separator: String = "-"
     private var _imageSet: ImageSet = .default
     
     /// The font to be used for standard text.
@@ -69,6 +70,13 @@ public final class Emojica {
         }
     }
     
+    public var separator: String {
+        get { return _separator }
+        set {
+            _separator = newValue
+        }
+    }
+    
     /// The image set used in the project.
     public var imageSet: ImageSet {
         get { return _imageSet }
@@ -76,10 +84,16 @@ public final class Emojica {
             switch newValue {
             case .default:
                 self.minimumCodePointWidth = 0
+                self.separator = "-"
             case .twemoji:
                 self.minimumCodePointWidth = 2
+                self.separator = "-"
             case .emojione:
                 self.minimumCodePointWidth = 4
+                self.separator = "-"
+            case .noto:
+                self.minimumCodePointWidth = 4
+                self.separator = "_"
             }
             self._imageSet = newValue
         }
@@ -101,6 +115,8 @@ extension Emojica {
         case twemoji = "Twemoji"
         /// Emoji One compatibility.
         case emojione = "Emoji One"
+        /// Noto Emoji compatibility.
+        case noto = "Noto Emoji"
     }
 }
 
@@ -202,7 +218,7 @@ extension Emojica {
         
         var name: String {
             let filtered = self.useModifiers ? emoji.filtered : emoji.filtered.filter{ !$0.isModifierSymbol }
-            return filtered.map{ String(format: "%0\(self.minimumCodePointWidth)x", $0.unicodeScalars.first!.value) }.joined(separator: "-")
+            return filtered.map{ String(format: "%0\(self.minimumCodePointWidth)x", $0.unicodeScalars.first!.value) }.joined(separator: self.separator)
         }
         
         guard let image = UIImage(named: name) else { return nil }
