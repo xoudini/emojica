@@ -1,7 +1,9 @@
 ![emojica](https://raw.githubusercontent.com/xoudini/emojica/images/emojica.png)
 =====
 
+<sup>
 Emojica – a Swift framework for emoji-related matters.
+</sup>
 
 ![gif](https://raw.githubusercontent.com/xoudini/emojica/images/demo.gif)
 
@@ -9,7 +11,7 @@ Emojica – a Swift framework for emoji-related matters.
 
 + Xcode 8.1
 + iOS 10.0+
-   *  _Lower versions haven't been tested properly, and the framework may run without issue on a lower version._
+   *  _Lower versions haven't been tested properly, although the framework may run without issues on a lower version._
 
 
 
