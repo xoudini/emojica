@@ -61,7 +61,7 @@ public final class Emojica {
         }
     }
     
-    /// The minimum width used in the names for imported images of emoji. The character `0` is used for padding.
+    /// The minimum width used in the names of the imported images. The character `0` is used for padding.
     /// - note:     This value must between 0 and 8.
     public var minimumCodePointWidth: UInt {
         get { return _minimumCodePointWidth }
@@ -70,6 +70,7 @@ public final class Emojica {
         }
     }
     
+    /// The separator used in the names of the imported images.
     public var separator: String {
         get { return _separator }
         set {
