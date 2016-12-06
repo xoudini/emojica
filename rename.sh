@@ -37,7 +37,7 @@ echo "Renaming images in $DIR";
 for f in *.png; do
     COUNT=$(( COUNT + 1 ));
 
-    name=$(echo "$f" | sed 's/-200d//g' | sed 's/-fe0f//g');
+    name=$(echo "$f" | sed 's/-200d//g' | sed 's/-fe0f//g' | sed 's/_200d//g' | sed 's/_fe0f//g' | sed 's/emoji_u//g');
 
     if [ "$name" != "$f" ]; then
         FOUND=$(( FOUND + 1 ));
