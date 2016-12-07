@@ -9,7 +9,7 @@ Emojica – a Swift framework for emoji-related matters.
 
 ## What does it do?
 
-Emojica allows you to replace the standard emoji in an iOS app with [custom emoji]((#compatible-image-sets)).
+Emojica allows you to replace the standard emoji in an iOS app with [custom emoji](#compatible-image-sets).
 
 Just follow the instructions below, import your custom image set, and you're ready to go.
 
