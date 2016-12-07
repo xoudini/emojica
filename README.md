@@ -25,9 +25,20 @@ Just follow the instructions below, import your custom image set, and you're rea
 
 ## Installation
 
-At the moment, Emojica can only be installed manually.
+### CocoaPods
 
-###   Manual installation
+#### 1. Add the pod to your `Podfile`:
+```ruby
+target '...' do
+    pod 'Emojica'
+end
+```
+#### 2. Navigate into your project directory and install/update:
+```sh
+$ cd /Path/To/Your/Project/ && pod install
+```
+ 
+###   Manual installation
 
 #### 1. Clone the repository, and drag `Emojica.xcodeproj` into your project hierarchy in Xcode.
 #### 2. Select your project, then select your application's target under _Targets_.
@@ -217,7 +228,7 @@ follow these instructions:
 #### 2. Open your preferred terminal.
 #### 3. Navigate into the directory:
 ```sh
-$ cd /Path/To/Your/ImageSet
+$ cd /Path/To/Your/ImageSet/
 ```
 #### 4. Run the script:
 ```sh
