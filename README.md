@@ -19,7 +19,10 @@ Just follow the instructions below, import your custom image set, and you're rea
 
 + Xcode 8.1
 + iOS 10.0+
-   *  _Lower versions haven't been tested properly, although the framework may run without issues on a lower version._
+   * _Lower versions haven't been tested properly, although the framework may run without issues on a lower version._
++ Swift 3
+   * _Using the framework in an Objective-C project requires some modifications to the source. 
+   Support for Objective-C will be added in the near future._
 
 
 
@@ -244,6 +247,8 @@ or send me electronic mail at [main@xoudini.com](mailto:main@xoudini.com).
 
 Feedback and questions are welcome, create an [__Issue__](https://github.com/xoudini/emojica/issues)
 for bugs, problems and feature requests.
+
+If you end up using Emojica in one of your projects, hit me up. I'd love to check it out!
 
 
 
