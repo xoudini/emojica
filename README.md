@@ -2,14 +2,15 @@
 =====
 
 <sup>
-Emojica – a Swift framework for emoji-related matters.
+Emojica – a Swift framework for using custom emoji in strings.
 </sup>
 
 ![gif](https://raw.githubusercontent.com/xoudini/emojica/images/demo.gif)
 
 ## What does it do?
 
-Emojica allows you to replace the standard emoji in an iOS app with [custom emoji](#compatible-image-sets).
+Emojica allows you to replace the standard emoji in your iOS apps with [custom emoji](#compatible-image-sets).
+Works on `UILabel` and `UITextView`.
 
 Just follow the instructions below, import your custom image set, and you're ready to go.
 
@@ -184,9 +185,6 @@ func textViewDidChange(_ textView: UITextView) {
     emojica.textViewDidChange(textView)
 }
 ```
-
-> The same applies for `UITextField`, although you must yourself implement the observer for the notification
-`UITextFieldTextDidChange`, since `UITextFieldDelegate` doesn't provide the method by default.
 
 
 
