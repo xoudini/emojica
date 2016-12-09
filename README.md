@@ -31,27 +31,29 @@ Just follow the instructions below, import your custom image set, and you're rea
 
 ### CocoaPods
 
-#### 1. Add the pod to your `Podfile`:
-```ruby
-target '...' do
-    pod 'Emojica'
-end
-```
-#### 2. Navigate into your project directory and install/update:
-```sh
-$ cd /Path/To/Your/Project/ && pod install
-```
+1. Add the pod to your `Podfile`:
+
+ ```ruby
+ target '...' do
+     pod 'Emojica'
+ end
+ ```
+2. Navigate into your project directory and install/update:
+
+ ```sh
+ $ cd /Path/To/Your/Project/ && pod install
+ ```
  
 ###   Manual installation
 
-#### 1. Clone the repository, and drag `Emojica.xcodeproj` into your project hierarchy in Xcode.
-#### 2. Select your project, then select your application's target under _Targets_.
-#### 3. Under the _General_ tab, click the _+_ under _Embedded Binaries_.
-#### 4. Select `Emojica.frameworkiOS` and finish by pressing _Add_.
+1. Clone the repository, and drag `Emojica.xcodeproj` into your project hierarchy in Xcode.
+2. Select your project, then select your application's target under __Targets__.
+3. Under the __General__ tab, click the __+__ under __Embedded Binaries__.
+4. Select `Emojica.frameworkiOS` and finish by pressing __Add__.
 
-> If Xcode gives you a `No such module 'Emojica'` compiler error at your `import` statement, just 
-build your application (or the framework) once. Also, each time you Clean (⇧⌘K) the project Xcode 
-will give you the same error, and the solution is the same.
+ > If Xcode gives you a `No such module 'Emojica'` compiler error at your `import` statement, just 
+ build your application (or the framework) once. Also, each time you Clean (⇧⌘K) the project Xcode 
+ will give you the same error, and the solution is the same.
 
 
 
@@ -123,7 +125,7 @@ let emojica = Emojica(font: UIFont.systemFont(ofSize: 17.0))
    emojica.imageSet = .default
    ```
    
- Automatically configures code point width based on the image set. 
+ Automatically configures settings specific to the image set.
    
    
 * __Disable modifier symbols__:
