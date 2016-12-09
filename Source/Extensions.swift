@@ -29,18 +29,6 @@ extension UITextView {
     }
 }
 
-extension UITextField {
-    public var emojicaText: NSAttributedString? {
-        get { return self.attributedText }
-        set { self.attributedText = newValue }
-    }
-    
-    public var emojicaPlaceholder: NSAttributedString? {
-        get { return self.attributedPlaceholder }
-        set { self.attributedPlaceholder = newValue }
-    }
-}
-
 extension UILabel {
     public var emojicaText: NSAttributedString? {
         get { return self.attributedText }

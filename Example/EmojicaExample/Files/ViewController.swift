@@ -126,7 +126,7 @@ extension ViewController {
     }
     
     func alert() {
-        let alert = UIAlertController(title: "No Images", message: "You need to import an image set for emoji for this to work.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "No Images", message: "You need to import an image set for this to work.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }

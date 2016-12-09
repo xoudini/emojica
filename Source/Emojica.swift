@@ -309,18 +309,6 @@ extension Emojica {
         textView.emojicaText = self.convert(string: textView.emojicaText)
         textView.setCursor(to: offset)
     }
-    
-    /// Replaces the emoji while editing the text field.
-    /// - note: `UITextFieldDelegate` does not offer this method by default. It's up
-    ///         to the developer to implement this using the appropriate notification
-    ///         provided in the documentation: `UITextFieldTextDidChange`.
-    /// - parameter textField:  The text field containing the changes.
-    public func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.emojicaText else { return }
-        let offset = textField.getCursor() ?? 0
-        textField.emojicaText = self.convert(string: text)
-        textField.setCursor(to: offset)
-    }
 }
 
 /// Subclass of `NSTextAttachment` for storing the original characters in the attachment.
