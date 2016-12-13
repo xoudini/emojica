@@ -16,6 +16,24 @@ Just follow the instructions below, import your custom image set, and you're rea
 
 
 
+## Features
+
+- [x] Compatible with __all__ iOS 10.2 emoji
+- [x] Works with any image set<sup>1</sup>
+- [x] Safe to use even with incomplete image sets<sup>2</sup>
+- [x] Convert input directly on [`textViewDidChange(_:)`](#directly-converting-text-input)
+- [x] Revert converted strings to their original representation
+
+<sup>
+1. The naming should follow a similar pattern as the compatible image sets.
+</sup>
+<br>
+<sup>
+2. The original emoji are used as fallback.
+</sup>
+
+
+
 ## Requirements
 
 + Xcode 8.1
