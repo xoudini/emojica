@@ -28,10 +28,6 @@ struct Unicode {
     /// The code points for additional characters not found in any of the blocks in `Unicode.Block`.
     static var additionalCharacters: [UInt32] {
         return [
-            // Latin 1 Supplement
-            0x00a9,     // COPYRIGHT SIGN
-            0x00ae,     // REGISTERED SIGN
-            
             // Basic Latin
             0x0023,     // NUMBER SIGN
             0x002a,     // ASTERISK
@@ -45,6 +41,10 @@ struct Unicode {
             0x0037,     // DIGIT SEVEN
             0x0038,     // DIGIT EIGHT
             0x0039,     // DIGIT NINE
+            
+            // Latin 1 Supplement
+            0x00a9,     // COPYRIGHT SIGN
+            0x00ae,     // REGISTERED SIGN
             
             // General Punctuation
             0x203c,     // DOUBLE EXCLAMATION MARK
