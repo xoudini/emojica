@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     let emojica = Emojica()
     
     // MARK: - Modifiable values
-    lazy var font = UIFont.systemFont(ofSize: 28, weight: UIFontWeightThin)
+    lazy var font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.thin)
     lazy var images: Emojica.ImageSet = .default
     
     // MARK: - Usage of convert
@@ -84,7 +84,7 @@ extension ViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
         self.set(imageSet: images)
         textView.delegate = self
-        textView.text = "Write here \u{1f609}"
+        textView.text = "\u{1f609}\u{1f1f3}\u{1f1f3}\u{1f1f4}\u{1f1f2} \u{23}\u{fe0f}\u{20e3} \u{2640}\u{fe0e} é \u{32}\u{fe0f}"//"Write here \u{1f609}"
         textView.font = font
         emojica.font = font
         emojica.revertible = true
@@ -95,7 +95,7 @@ extension ViewController {
         self.imageSet.title = emojica.imageSet.rawValue
     }
     
-    func keyboardWillHide(_ notification: NSNotification) {
+    @objc func keyboardWillHide(_ notification: NSNotification) {
         if let info = notification.userInfo {
             let animationTime = info[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
             bottom.constant = 0
@@ -103,7 +103,7 @@ extension ViewController {
         }
     }
     
-    func keyboardWillChangeFrame(_ notification: NSNotification) {
+    @objc func keyboardWillChangeFrame(_ notification: NSNotification) {
         if let info = notification.userInfo {
             let animationTime = info[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
             let endFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue

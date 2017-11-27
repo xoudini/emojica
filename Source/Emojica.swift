@@ -100,8 +100,9 @@ public final class Emojica {
         }
     }
     
-    /// Setting this to `false` will strip out all modifier symbols (🏻, 🏼, 🏽, 🏾 and 🏿).
-    /// - note:     This will **not** affect fallbacks.
+    /// Setting this to `false` _used to_ strip out all modifier symbols (🏻, 🏼, 🏽, 🏾 and 🏿).
+    /// - note:     This will be removed in a future version.
+    @available(*, deprecated: 1.0)
     public var useModifiers: Bool = true
     
     /// Keep the instance non-revertible if the original strings aren't needed after conversion.
@@ -137,142 +138,23 @@ extension Emojica {
     public func convert(string attributedString: NSAttributedString) -> NSAttributedString {
         let result = NSMutableAttributedString(attributedString: attributedString)
         
-        // Create instance of emoji handler.
-        let handler = EmojiHandler()
+        let stack = generateReplacementStack(from: attributedString)
         
-        // Create a copy.
-        var characters = attributedString.string.characters
-        
-        // Gather all modifiers to handle.
-        var modifiers = characters.filter{ $0.isModifierSymbol }
-        
-        while !characters.isEmpty {
-            
-            let character = characters.removeFirst()
-            
-            // Disregard non-emoji characters.
-            guard character.isEmoji else { continue }
-            
-            // Disregard characters with VS-15.
-            if character.hasVariationSelector15 { continue }
-            
-            // Handle modifier special case.
-            if let modifier = modifiers.first, let first = characters.first, modifier == first {
-                // Remove modifier from both collections.
-                modifiers.removeFirst()
-                characters.removeFirst()
-                
-                if handler.complete { handler.finish() }
-                handler.add(characters: character, modifier)
-                
-                continue
-            }
-            
-            // Handle regional indicators somewhat gracefully.
-            if character.hasRegionalIndicatorSymbol {
-                let isFlag = character.isFlagSequence
-                let scalars = character.unicodeScalars.map{ Character($0) }
-                
-                var i = 0
-                
-                while i < scalars.count {
-                    if handler.complete { handler.finish() }
-                    isFlag ? handler.add(characters: scalars[i], scalars[i + 1]) : handler.add(characters: scalars[i])
-                    i += isFlag ? 2 : 1
-                }
-                
-                continue
-            }
-            
-            // Handle remaining emoji.
-            if handler.complete { handler.finish() }
-            handler.add(characters: character)
-        }
-        
-        // Wrap up the last emoji, even if it isn't complete.
-        handler.finish()
-        
-        // Parse through results and replace.
-        for emoji in handler.results {
-            
-            let range = result.mutableString.range(of: emoji.string)
-            
-            if let replacement = replacement(for: emoji) {
-                result.replaceCharacters(in: range, with: replacement)
+        // Replacing characters in reverse order, to avoid out-of-range issues.
+        while let replacement = stack.pop() {
+            if let replacementString = replacementString(from: replacement) {
+                result.replaceCharacters(in: replacement.range, with: replacementString)
             } else {
-                result.replaceCharacters(in: range, with: fallback(for: emoji))
+                result.replaceCharacters(in: replacement.range, with: fallbackString(from: replacement))
             }
         }
         
-        let range = result.mutableString.range(of: result.string)
-        
+        // Fix font and size of final string.
+        let resultRange = result.mutableString.range(of: result.string)
         let font = self.font ?? UIFont.systemFont(ofSize: self.pointSize)
-        result.addAttribute(NSFontAttributeName, value: font, range: range)
+        result.addAttribute(NSAttributedStringKey.font, value: font, range: resultRange)
         
         return result
-    }
-    
-    /// Finds a replacement for a sequence.
-    /// - parameter emoji:      The `EmojiHandler` instance containing the sequence.
-    /// - returns:              An `NSAttributedString` with the replacement as an attachment, or `nil`.
-    private func replacement(for emoji: EmojiHandler) -> NSAttributedString? {
-        
-        var name: String {
-            let filtered = self.useModifiers ? emoji.filtered : emoji.filtered.filter{ !$0.isModifierSymbol }
-            return filtered.map{ String(format: "%0\(self.minimumCodePointWidth)x", $0.unicodeScalars.first!.value) }.joined(separator: self.separator)
-        }
-        
-        guard let image = UIImage(named: name) else { return nil }
-        
-        let attachment = EmojicaAttachment()
-        attachment.image = image
-        attachment.resize(to: self.pointSize, with: self.font)
-        
-        // Adding characters to attachment if revertible.
-        if self.revertible { attachment.characters = emoji.characters }
-        
-        return NSAttributedString(attachment: attachment)
-    }
-    
-    /// Used as fallback if `replacement(for:)` returned `nil`.
-    /// - parameter emoji:      The `EmojiHandler` instance containing the sequence.
-    /// - returns:              An `NSAttributedString` with the fallback.
-    private func fallback(for emoji: EmojiHandler) -> NSAttributedString {
-        let fallback = NSMutableAttributedString()
-        
-        // Store for sequence.
-        var sequence: [Character] = []
-        
-        // Loop in reverse to catch invisible symbols.
-        for character in emoji.characters.reversed() {
-            
-            // Insert into first position of sequence.
-            sequence.insert(character, at: 0)
-            
-            // Continue if character is invisible symbol.
-            if character.hasZeroWidthJoiner || character.hasVariationSelector16 { continue }
-            
-            let name = String(format: "%0\(self.minimumCodePointWidth)x", character.unicodeScalars.first!.value)
-            
-            if let image = UIImage(named: name) {
-                
-                let attachment = EmojicaAttachment()
-                attachment.image = image
-                attachment.resize(to: self.pointSize, with: self.font)
-                
-                // Adding characters to attachment if revertible.
-                if self.revertible { attachment.characters = sequence }
-                
-                fallback.insert(NSAttributedString(attachment: attachment), at: 0)
-            } else {
-                // Insert the character itself, along with special characters.
-                fallback.insert(NSAttributedString(string: String(sequence)), at: 0)
-            }
-            
-            sequence = []
-        }
-        
-        return fallback
     }
 }
 
@@ -288,11 +170,9 @@ extension Emojica {
         // Return the string as is if the instance isn't revertible.
         guard self.revertible else { return storage.string }
         
-        storage.enumerateAttribute(NSAttachmentAttributeName, in: range, options: []) { (value, range, _) -> Void in
+        storage.enumerateAttribute(NSAttributedStringKey.attachment, in: range, options: []) { (value, range, _) -> Void in
             if let attachment = value as? EmojicaAttachment {
-                if let representation = attachment.representation {
-                    storage.replaceCharacters(in: range, with: representation)
-                }
+                storage.replaceCharacters(in: range, with: attachment.representation)
             }
         }
         
@@ -302,7 +182,7 @@ extension Emojica {
 
 extension Emojica {
     
-    /// Replaces the emoji while editing the text view.
+    /// Replaces the emoji properly when called from `textViewDidChange(:)`.
     /// - parameter textView:   The text view containing the changes.
     public func textViewDidChange(_ textView: UITextView) {
         let offset = textView.getCursor() ?? 0
@@ -311,14 +191,151 @@ extension Emojica {
     }
 }
 
-/// Subclass of `NSTextAttachment` for storing the original characters in the attachment.
-class EmojicaAttachment: NSTextAttachment {
-    /// The character store.
-    var characters: [Character]?
+extension Emojica {
     
-    /// A string representation of the characters.
-    var representation: String? {
-        guard let characters = self.characters else { return nil }
-        return String(characters)
+    /// Iterates through every unicode scalar in the string and generates a stack of
+    /// replacement objects.
+    /// - parameter attributedString:   The string to parse.
+    fileprivate func generateReplacementStack(from attributedString: NSAttributedString) -> Stack<Replacement> {
+        let replacementStack: Stack<Replacement> = Stack()
+        
+        var range: NSRange = NSRange(location: 0, length: 0)
+        
+        for character in attributedString.string {
+            let unicodeScalarStack: Stack<UnicodeScalar> = Stack()
+            
+            for unicodeScalar in character.unicodeScalars {
+                range.length += UTF16.width(unicodeScalar)
+                
+                if unicodeScalarStack.isEmpty {
+                    
+                    // Quit iterating if stack is empty and current scalar isn't emoji.
+                    guard unicodeScalar.isEmoji else { break }
+                    unicodeScalarStack.push(unicodeScalar)
+                    
+                } else {
+                    
+                    // Non-emoji representation requested.
+                    if unicodeScalar.isVariationSelector15 {
+                        unicodeScalarStack.pop()
+                    }
+                        
+                        // Emoji representation requested.
+                    else if unicodeScalar.isVariationSelector16 {
+                        unicodeScalarStack.push(unicodeScalar)
+                    }
+                        
+                        // Combining enclosing keycap.
+                    else if unicodeScalar.isKeycapSymbol {
+                        unicodeScalarStack.push(unicodeScalar)
+                    }
+                        
+                        // Joiner for sequences.
+                    else if unicodeScalar.isZeroWidthJoiner {
+                        unicodeScalarStack.push(unicodeScalar)
+                    }
+                        
+                        // Actual emoji.
+                    else if unicodeScalar.isEmoji {
+                        unicodeScalarStack.push(unicodeScalar)
+                    }
+                }
+            }
+            
+            /* Cleanup time */
+            
+            // If head is a keycap base, make sure that the last unicode scalar is an enclosing keycap.
+            if let head = unicodeScalarStack.head, head.isKeycapBase {
+                if !unicodeScalarStack.top!.isKeycapSymbol { unicodeScalarStack.clear() }
+            }
+            
+            // Push replacement object to stack if the unicode scalar stack isn't empty.
+            if !unicodeScalarStack.isEmpty {
+                let replacement = Replacement(character: character, unicodeScalars: unicodeScalarStack.array, range: range)
+                replacementStack.push(replacement)
+            }
+            
+            // Update range location for next character.
+            range.location += range.length
+            range.length = 0
+        }
+        
+        return replacementStack
+    }
+    
+    /// Format string used for converting a code point to a hexadecimal string.
+    private var formatString: String {
+        return "%0\(self.minimumCodePointWidth)x"
+    }
+    
+    /// Generates a replacement string for a grapheme cluster.
+    /// - parameter replacement:    The `Replacement` instance to use in the conversion.
+    /// - returns:                  An `NSAttributedString` with the replacement as an attachment, or `nil`.
+    fileprivate func replacementString(from replacement: Replacement) -> NSAttributedString? {
+        var name: String {
+            return replacement.unicodeScalars
+                .filter { !($0.isZeroWidthJoiner || $0.isVariationSelector16) }
+                .map { String(format: self.formatString, $0.value) }
+                .joined(separator: self.separator)
+        }
+        
+        guard let image = UIImage(named: name) else { return nil }
+        
+        let attachment = EmojicaAttachment()
+        attachment.image = image
+        attachment.resize(to: self.pointSize, with: self.font)
+        
+        if self.revertible {
+            attachment.insert(unicodeScalars: replacement.unicodeScalars)
+        }
+        
+        return NSAttributedString(attachment: attachment)
+    }
+    
+    /// Used as fallback if `replacementString(from:)` returned `nil`.
+    /// - parameter replacement:    The `Replacement` instance to use in the conversion.
+    /// - returns:                  An `NSAttributedString` with the fallback.
+    fileprivate func fallbackString(from replacement: Replacement) -> NSAttributedString {
+        let fallback = NSMutableAttributedString()
+        
+        let unicodeScalarStack: Stack<UnicodeScalar> = Stack(replacement.unicodeScalars)
+        let failsafeStack: Stack<UnicodeScalar> = Stack()
+        
+        while let unicodeScalar = unicodeScalarStack.pop() {
+            
+            failsafeStack.push(unicodeScalar)
+            
+            guard !unicodeScalar.isVariationSelector16, !unicodeScalar.isZeroWidthJoiner else { continue }
+            
+            let name = String(format: self.formatString, unicodeScalar.value)
+            
+            if let image = UIImage(named: name) {
+                
+                let attachment = EmojicaAttachment()
+                attachment.image = image
+                attachment.resize(to: self.pointSize, with: self.font)
+                
+                if self.revertible {
+                    while let u = failsafeStack.pop() {
+                        attachment.insert(unicodeScalar: u)
+                    }
+                }
+                
+                fallback.insert(NSAttributedString(attachment: attachment), at: 0)
+                
+            } else {
+                
+                // No image found, so insert unicode scalars into fallback as last resort.
+                var string = String()
+                
+                while let u = failsafeStack.pop() {
+                    string.unicodeScalars.append(u)
+                }
+                
+                fallback.insert(NSAttributedString(string: string), at: 0)
+            }
+        }
+        
+        return fallback
     }
 }

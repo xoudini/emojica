@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37009FBB1DF1F5CC00AE002E /* EmojiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37009FBA1DF1F5CC00AE002E /* EmojiHandler.swift */; };
 		3755AE1D1DDF99F5007E5EBF /* Emojica.h in Headers */ = {isa = PBXBuildFile; fileRef = 3755AE1B1DDF99F5007E5EBF /* Emojica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3755AE251DDF9A79007E5EBF /* Emojica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755AE241DDF9A79007E5EBF /* Emojica.swift */; };
 		3755AE3D1DDF9C09007E5EBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755AE3C1DDF9C09007E5EBF /* Extensions.swift */; };
+		37692A271FCC9F2100E9E15B /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37692A261FCC9F2100E9E15B /* Utility.swift */; };
 		37CF90141DE4DF5400FAE008 /* Unicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF90131DE4DF5400FAE008 /* Unicode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37009FBA1DF1F5CC00AE002E /* EmojiHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiHandler.swift; sourceTree = "<group>"; };
 		3755AE181DDF99F5007E5EBF /* Emojica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Emojica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3755AE1B1DDF99F5007E5EBF /* Emojica.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Emojica.h; sourceTree = "<group>"; };
 		3755AE1C1DDF99F5007E5EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3755AE241DDF9A79007E5EBF /* Emojica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emojica.swift; sourceTree = "<group>"; };
 		3755AE3C1DDF9C09007E5EBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		37692A261FCC9F2100E9E15B /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		37CF90131DE4DF5400FAE008 /* Unicode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unicode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,9 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				3755AE241DDF9A79007E5EBF /* Emojica.swift */,
-				37009FBA1DF1F5CC00AE002E /* EmojiHandler.swift */,
 				3755AE3C1DDF9C09007E5EBF /* Extensions.swift */,
 				37CF90131DE4DF5400FAE008 /* Unicode.swift */,
+				37692A261FCC9F2100E9E15B /* Utility.swift */,
 				3755AE231DDF9A45007E5EBF /* Supporting Files */,
 			);
 			path = Source;
@@ -115,7 +115,7 @@
 				TargetAttributes = {
 					3755AE171DDF99F5007E5EBF = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -152,10 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37692A271FCC9F2100E9E15B /* Utility.swift in Sources */,
 				3755AE251DDF9A79007E5EBF /* Emojica.swift in Sources */,
 				3755AE3D1DDF9C09007E5EBF /* Extensions.swift in Sources */,
 				37CF90141DE4DF5400FAE008 /* Unicode.swift in Sources */,
-				37009FBB1DF1F5CC00AE002E /* EmojiHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +291,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -310,7 +311,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoudini.Emojica;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

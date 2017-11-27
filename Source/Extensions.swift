@@ -53,6 +53,20 @@ extension UITextInput {
     
 }
 
+extension String {
+    internal init<S: Sequence>(unicodeScalars: S) where S.Iterator.Element == UnicodeScalar {
+        var string = String()
+        string.unicodeScalars.append(contentsOf: unicodeScalars)
+        self = string
+    }
+}
+
+extension Sequence where Iterator.Element == UnicodeScalar {
+    var string: String {
+        return String(String.UnicodeScalarView(self))
+    }
+}
+
 extension NSTextAttachment {
     /// Resizes the attachment to work well with the font.
     internal func resize(to size: CGFloat, with font: UIFont?) {
@@ -76,71 +90,44 @@ extension UnicodeScalar {
     var isModifierSymbol: Bool { return 0x1f3fb...0x1f3ff ~= self.value }
     var isKeycapSymbol: Bool { return 0x20e3 == self.value }
     var isKeycapBase: Bool { return Unicode.keycapBaseCharacters.contains(self.value) }
-    var type: EmojiHandler.ScalarType { return isZeroWidthJoiner ? .binding : .standard }
 }
 
-extension Character {
-    
-    var unicodeScalars: String.UnicodeScalarView { return String(self).unicodeScalars }
-    
-    var hasZeroWidthJoiner: Bool { return !self.unicodeScalars.filter{ $0.isZeroWidthJoiner }.isEmpty }
-    var hasVariationSelector: Bool { return !self.unicodeScalars.filter{ $0.isVariationSelector }.isEmpty }
-    var hasVariationSelector15: Bool { return !self.unicodeScalars.filter{ $0.isVariationSelector15 }.isEmpty }
-    var hasVariationSelector16: Bool { return !self.unicodeScalars.filter{ $0.isVariationSelector16 }.isEmpty }
-    var hasRegionalIndicatorSymbol: Bool { return !self.unicodeScalars.filter{ $0.isRegionalIndicatorSymbol }.isEmpty }
-    var isModifierSymbol: Bool { return !self.unicodeScalars.filter{ $0.isModifierSymbol }.isEmpty }
-    var hasKeycapSymbol: Bool { return !self.unicodeScalars.filter{ $0.isKeycapSymbol }.isEmpty }
-    var hasKeycapBase: Bool { return !self.unicodeScalars.filter{ $0.isKeycapBase }.isEmpty }
-    
-    var isFlagSequence: Bool {
-        let count = self.unicodeScalars.count
-        return count % 2 == 0 && self.unicodeScalars.filter{ $0.isRegionalIndicatorSymbol }.count == count
-    }
-}
+fileprivate typealias Block = Unicode.Block
 
-extension Character {
-    
-    /// A boolean value based on whether the character is emoji or not.
-    /// - note: This value is false for replacement characters.
+extension UnicodeScalar {
     internal var isEmoji: Bool {
         guard
-            let first = self.unicodeScalars.first,
-            !first.isReplacementCharacter,
-            !first.isObjectReplacementCharacter
-            else { return false }
+            !self.isObjectReplacementCharacter,
+            !self.isReplacementCharacter
+        else { return false }
         
-        // The significant code point is always the first scalar.
-        let codePoint = first.value
+        let codePoint = self.value
         
         switch codePoint {
-        case Unicode.Block.miscellaneousSymbols.range:
-            let block = Unicode.Block.miscellaneousSymbols
+        case Block.miscellaneousSymbols.range:
+            let block = Block.miscellaneousSymbols
             return !block.nonEmoji.contains(codePoint)
             
-        case Unicode.Block.dingbats.range:
-            let block = Unicode.Block.dingbats
+        case Block.dingbats.range:
+            let block = Block.dingbats
             return !block.nonEmoji.contains(codePoint)
             
-        case Unicode.Block.miscellaneousSymbolsAndPictographs.range:
-            let block = Unicode.Block.miscellaneousSymbolsAndPictographs
+        case Block.miscellaneousSymbolsAndPictographs.range:
+            let block = Block.miscellaneousSymbolsAndPictographs
             return !block.nonEmoji.contains(codePoint)
             
-        case Unicode.Block.emoticons.range:
+        case Block.emoticons.range:
             return true
             
-        case Unicode.Block.transportAndMapSymbols.range:
-            let block = Unicode.Block.transportAndMapSymbols
+        case Block.transportAndMapSymbols.range:
+            let block = Block.transportAndMapSymbols
             return !block.nonEmoji.contains(codePoint) && !block.unassigned.contains(codePoint)
             
-        case Unicode.Block.supplementalSymbolsAndPictographs.range:
-            let block = Unicode.Block.supplementalSymbolsAndPictographs
+        case Block.supplementalSymbolsAndPictographs.range:
+            let block = Block.supplementalSymbolsAndPictographs
             return !block.nonEmoji.contains(codePoint) && !block.unassigned.contains(codePoint)
             
         case let value where Unicode.additionalCharacters.contains(value):
-            // Remove unaccompanied keycap bases.
-            if first.isKeycapBase {
-                guard self.hasKeycapSymbol else { return false }
-            }
             return true
             
         default:
@@ -148,6 +135,3 @@ extension Character {
         }
     }
 }
-
-
-
