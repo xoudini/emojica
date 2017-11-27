@@ -18,7 +18,7 @@ Just follow the instructions below, import your custom image set, and you're rea
 
 ## Features
 
-- [x] Compatible with __all__ iOS 10.3 emoji
+- [x] Compatible with __all__ iOS 11 emoji
 - [x] Works with any image set<sup>1</sup>
 - [x] Safe to use even with incomplete image sets<sup>2</sup>
 - [x] Convert input directly on [`textViewDidChange(_:)`](#directly-converting-text-input)
@@ -39,9 +39,9 @@ Just follow the instructions below, import your custom image set, and you're rea
 + Xcode 8.3
 + iOS 10.0+
    * _Lower versions haven't been tested properly, although the framework may run without issues on a lower version._
-+ Swift 3
-   * _Using the framework in an Objective-C project requires some modifications to the source. 
-   Support for Objective-C will be added in the near future._
++ Swift 4
+   * _Using the framework in an Objective-C project may require some modifications to the source. 
+   Support for Objective-C will possibly be added in the near future._
 
 
 
