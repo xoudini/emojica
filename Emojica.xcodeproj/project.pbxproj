@@ -11,8 +11,20 @@
 		3755AE251DDF9A79007E5EBF /* Emojica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755AE241DDF9A79007E5EBF /* Emojica.swift */; };
 		3755AE3D1DDF9C09007E5EBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755AE3C1DDF9C09007E5EBF /* Extensions.swift */; };
 		37692A271FCC9F2100E9E15B /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37692A261FCC9F2100E9E15B /* Utility.swift */; };
+		37692A401FCCC0AB00E9E15B /* EmojicaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37692A3F1FCCC0AB00E9E15B /* EmojicaTests.swift */; };
+		37692A421FCCC0AB00E9E15B /* Emojica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3755AE181DDF99F5007E5EBF /* Emojica.framework */; };
 		37CF90141DE4DF5400FAE008 /* Unicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF90131DE4DF5400FAE008 /* Unicode.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		37692A431FCCC0AB00E9E15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3755AE0F1DDF99F5007E5EBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3755AE171DDF99F5007E5EBF;
+			remoteInfo = Emojica;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3755AE181DDF99F5007E5EBF /* Emojica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Emojica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,6 +33,9 @@
 		3755AE241DDF9A79007E5EBF /* Emojica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emojica.swift; sourceTree = "<group>"; };
 		3755AE3C1DDF9C09007E5EBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		37692A261FCC9F2100E9E15B /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		37692A3D1FCCC0AB00E9E15B /* EmojicaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojicaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37692A3F1FCCC0AB00E9E15B /* EmojicaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojicaTests.swift; sourceTree = "<group>"; };
+		37692A411FCCC0AB00E9E15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37CF90131DE4DF5400FAE008 /* Unicode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unicode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -32,6 +47,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		37692A3A1FCCC0AB00E9E15B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37692A421FCCC0AB00E9E15B /* Emojica.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -39,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				3755AE1A1DDF99F5007E5EBF /* Source */,
+				37692A3E1FCCC0AB00E9E15B /* EmojicaTests */,
 				3755AE191DDF99F5007E5EBF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				3755AE181DDF99F5007E5EBF /* Emojica.framework */,
+				37692A3D1FCCC0AB00E9E15B /* EmojicaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,15 @@
 				3755AE1C1DDF99F5007E5EBF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		37692A3E1FCCC0AB00E9E15B /* EmojicaTests */ = {
+			isa = PBXGroup;
+			children = (
+				37692A3F1FCCC0AB00E9E15B /* EmojicaTests.swift */,
+				37692A411FCCC0AB00E9E15B /* Info.plist */,
+			);
+			path = EmojicaTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,18 +138,41 @@
 			productReference = 3755AE181DDF99F5007E5EBF /* Emojica.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		37692A3C1FCCC0AB00E9E15B /* EmojicaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37692A471FCCC0AB00E9E15B /* Build configuration list for PBXNativeTarget "EmojicaTests" */;
+			buildPhases = (
+				37692A391FCCC0AB00E9E15B /* Sources */,
+				37692A3A1FCCC0AB00E9E15B /* Frameworks */,
+				37692A3B1FCCC0AB00E9E15B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37692A441FCCC0AB00E9E15B /* PBXTargetDependency */,
+			);
+			name = EmojicaTests;
+			productName = EmojicaTests;
+			productReference = 37692A3D1FCCC0AB00E9E15B /* EmojicaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3755AE0F1DDF99F5007E5EBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Dan Lindholm";
 				TargetAttributes = {
 					3755AE171DDF99F5007E5EBF = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					37692A3C1FCCC0AB00E9E15B = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -133,12 +190,20 @@
 			projectRoot = "";
 			targets = (
 				3755AE171DDF99F5007E5EBF /* Emojica */,
+				37692A3C1FCCC0AB00E9E15B /* EmojicaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3755AE161DDF99F5007E5EBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37692A3B1FCCC0AB00E9E15B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -159,7 +224,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		37692A391FCCC0AB00E9E15B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37692A401FCCC0AB00E9E15B /* EmojicaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37692A441FCCC0AB00E9E15B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3755AE171DDF99F5007E5EBF /* Emojica */;
+			targetProxy = 37692A431FCCC0AB00E9E15B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3755AE1E1DDF99F5007E5EBF /* Debug */ = {
@@ -316,6 +397,44 @@
 			};
 			name = Release;
 		};
+		37692A451FCCC0AB00E9E15B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EmojicaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoudini.EmojicaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		37692A461FCCC0AB00E9E15B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EmojicaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoudini.EmojicaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -333,6 +452,15 @@
 			buildConfigurations = (
 				3755AE211DDF99F5007E5EBF /* Debug */,
 				3755AE221DDF99F5007E5EBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37692A471FCCC0AB00E9E15B /* Build configuration list for PBXNativeTarget "EmojicaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37692A451FCCC0AB00E9E15B /* Debug */,
+				37692A461FCCC0AB00E9E15B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
