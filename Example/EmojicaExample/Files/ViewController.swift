@@ -84,7 +84,7 @@ extension ViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
         self.set(imageSet: images)
         textView.delegate = self
-        textView.text = "\u{1f609}\u{1f1f3}\u{1f1f3}\u{1f1f4}\u{1f1f2} \u{23}\u{fe0f}\u{20e3} \u{2640}\u{fe0e} é \u{32}\u{fe0f}"//"Write here \u{1f609}"
+        textView.text = "Write here \u{1f609}"
         textView.font = font
         emojica.font = font
         emojica.revertible = true
