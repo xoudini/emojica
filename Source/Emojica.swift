@@ -185,6 +185,7 @@ extension Emojica {
     /// Replaces the emoji properly when called from `textViewDidChange(:)`.
     /// - parameter textView:   The text view containing the changes.
     public func textViewDidChange(_ textView: UITextView) {
+        if textView.markedTextRange != nil { return }
         let offset = textView.getCursor() ?? 0
         textView.emojicaText = self.convert(string: textView.emojicaText)
         textView.setCursor(to: offset)
