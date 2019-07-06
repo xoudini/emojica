@@ -80,8 +80,8 @@ extension ViewController {
     
     func setup() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         self.set(imageSet: images)
         textView.delegate = self
         textView.text = "Write here \u{1f609}"
@@ -97,7 +97,7 @@ extension ViewController {
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         if let info = notification.userInfo {
-            let animationTime = info[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+            let animationTime = info[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
             bottom.constant = 0
             UIView.animate(withDuration: animationTime, animations: { self.view.layoutIfNeeded() })
         }
@@ -105,8 +105,8 @@ extension ViewController {
     
     @objc func keyboardWillChangeFrame(_ notification: NSNotification) {
         if let info = notification.userInfo {
-            let animationTime = info[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-            let endFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            let animationTime = info[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+            let endFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             bottom.constant = endFrame.height
             UIView.animate(withDuration: animationTime, animations: { self.view.layoutIfNeeded() })
         }
@@ -127,7 +127,7 @@ extension ViewController {
     
     func alert() {
         let alert = UIAlertController(title: "No Images", message: "You need to import an image set for this to work.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -144,7 +144,7 @@ extension ViewController {
             }
             sheet.addAction(action)
         }
-        sheet.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil))
+        sheet.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
 }
