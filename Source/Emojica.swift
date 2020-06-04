@@ -102,7 +102,7 @@ public final class Emojica {
     
     /// Setting this to `false` _used to_ strip out all modifier symbols (🏻, 🏼, 🏽, 🏾 and 🏿).
     /// - note:     This will be removed in a future version.
-    @available(*, deprecated: 1.0)
+    @available(swift, deprecated: 1.0)
     public var useModifiers: Bool = true
     
     /// Keep the instance non-revertible if the original strings aren't needed after conversion.
