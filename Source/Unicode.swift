@@ -26,7 +26,7 @@ import Foundation
 struct Unicode {
     
     /// The code points for additional characters not found in any of the blocks in `Unicode.Block`.
-    static var additionalCharacters: [UInt32] {
+    static var additionalCharacters: Set<UInt32> {
         return [
             // Basic Latin
             0x0023,     // NUMBER SIGN
@@ -201,7 +201,7 @@ struct Unicode {
     }
     
     /// The code points of keycap base characters.
-    static var keycapBaseCharacters: [UInt32] {
+    static var keycapBaseCharacters: Set<UInt32> {
         return [
             0x0023,     // NUMBER SIGN
             0x002a,     // ASTERISK
@@ -267,7 +267,7 @@ extension Unicode.Block {
     ///  1. The values are constant, and the Unicode® Standard is amended infrequently (roughly once a year).
     ///  2. This property is accessed quite often.
     ///  3. Flattening an array of ranges would increase complexity – see `flatMap(_:)`.
-    var unassigned: [UInt32] {
+    var unassigned: Set<UInt32> {
         switch self {
         case .miscellaneousSymbols,
              .dingbats,
@@ -406,7 +406,7 @@ extension Unicode.Block {
     ///  1. The values are constant, and the Unicode® Standard is amended infrequently (roughly once a year).
     ///  2. This property is accessed quite often.
     ///  3. Flattening an array of ranges would increase complexity – see `flatMap(_:)`.
-    var nonEmoji: [UInt32] {
+    var nonEmoji: Set<UInt32> {
         switch self {
         case .emoticons,
              .symbolsAndPictographsExtendedA:
