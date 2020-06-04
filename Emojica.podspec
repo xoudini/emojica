@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                = "Emojica"
-  s.version             = "0.9.4"
+  s.version             = "0.9.5"
   s.summary             = "A Swift framework for custom emoji conversion."
 
   s.homepage            = "https://github.com/xoudini/emojica"
@@ -14,5 +14,6 @@ Pod::Spec.new do |s|
 
   s.source              = { :git => "https://github.com/xoudini/emojica.git", :tag => s.version.to_s }
   s.source_files        = "Source/*.{h,swift}"
+  s.swift_version       = "5.0"
 
 end
