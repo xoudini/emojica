@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                = "Emojica"
-  s.version             = "0.9.5"
+  s.version             = "0.9.6"
   s.summary             = "A Swift framework for custom emoji conversion."
 
   s.homepage            = "https://github.com/xoudini/emojica"
