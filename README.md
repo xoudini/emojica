@@ -39,7 +39,7 @@ Just follow the instructions below, import your custom image set, and you're rea
 + Xcode 8.3
 + iOS 10.0+
    * _Lower versions haven't been tested properly, although the framework may run without issues on a lower version._
-+ Swift 4
++ Swift 5
    * _Using the framework in an Objective-C project may require some modifications to the source. 
    Support for Objective-C will possibly be added in the near future._
 
