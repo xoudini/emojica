@@ -182,7 +182,21 @@ struct Unicode {
             0x1f239,    //
             0x1f23a,    //
             0x1f250,    //
-            0x1f251     //
+            0x1f251,    //
+            
+            // Geometric Shapes Extended
+            0x1f7e0,    //
+            0x1f7e1,    //
+            0x1f7e2,    //
+            0x1f7e3,    //
+            0x1f7e4,    //
+            0x1f7e5,    //
+            0x1f7e6,    //
+            0x1f7e7,    //
+            0x1f7e8,    //
+            0x1f7e9,    //
+            0x1f7ea,    //
+            0x1f7eb,    //
         ]
     }
     
@@ -220,6 +234,8 @@ extension Unicode {
         case transportAndMapSymbols
         /// Supplemental Symbols And Pictographs
         case supplementalSymbolsAndPictographs
+        /// Symbols And Pictographs Extended-A
+        case symbolsAndPictographsExtendedA
     }
 }
 
@@ -240,6 +256,8 @@ extension Unicode.Block {
             return 0x1f680...0x1f6ff
         case .supplementalSymbolsAndPictographs:
             return 0x1f900...0x1f9ff
+        case .symbolsAndPictographsExtendedA:
+            return 0x1fa70...0x1faff
         }
     }
     
@@ -260,9 +278,6 @@ extension Unicode.Block {
             
         case .transportAndMapSymbols:
             return [
-                0x1f6d5,
-                0x1f6d6,
-                0x1f6d7,
                 0x1f6d8,
                 0x1f6d9,
                 0x1f6da,
@@ -276,65 +291,111 @@ extension Unicode.Block {
                 0x1f6ee,
                 0x1f6ef,
                 
-                0x1f6fa,
-                0x1f6fb,
-                0x1f6fc,
                 0x1f6fd,
                 0x1f6fe,
                 0x1f6ff
             ]
         case .supplementalSymbolsAndPictographs:
             return [
-                0x1f90c,
-                0x1f90d,
-                0x1f90e,
-                0x1f90f,
-                
-                0x1f93f,
-                
-                0x1f971,
-                0x1f972,
-
-                0x1f977,
-                0x1f978,
                 0x1f979,
 
-                0x1f97b,
-                
-                0x1f9a3,
-                0x1f9a4,
-                0x1f9a5,
-                0x1f9a6,
-                0x1f9a7,
-                0x1f9a8,
-                0x1f9a9,
-                0x1f9aa,
-                0x1f9ab,
-                0x1f9ac,
-                0x1f9ad,
-                0x1f9ae,
-                0x1f9af,
-                
-                0x1f9ba,
-                0x1f9bb,
-                0x1f9bc,
-                0x1f9bd,
-                0x1f9be,
-                0x1f9bf,
-                
-                0x1f9c3,
-                0x1f9c4,
-                0x1f9c5,
-                0x1f9c6,
-                0x1f9c7,
-                0x1f9c8,
-                0x1f9c9,
-                0x1f9ca,
-                0x1f9cb,
                 0x1f9cc,
-                0x1f9cd,
-                0x1f9ce,
-                0x1f9cf
+            ]
+        case .symbolsAndPictographsExtendedA:
+            return [
+                0x1fa75,
+                0x1fa76,
+                0x1fa77,
+                
+                0x1fa7b,
+                0x1fa7c,
+                0x1fa7d,
+                0x1fa7e,
+                0x1fa7f,
+                
+                0x1fa87,
+                0x1fa88,
+                0x1fa89,
+                0x1fa8a,
+                0x1fa8b,
+                0x1fa8c,
+                0x1fa8d,
+                0x1fa8e,
+                0x1fa8f,
+                
+                0x1faa9,
+                0x1faaa,
+                0x1faab,
+                0x1faac,
+                0x1faad,
+                0x1faae,
+                0x1faaf,
+                
+                0x1fab7,
+                0x1fab8,
+                0x1fab9,
+                0x1faba,
+                0x1fabb,
+                0x1fabc,
+                0x1fabd,
+                0x1fabe,
+                0x1fabf,
+                
+                0x1fac3,
+                0x1fac4,
+                0x1fac5,
+                0x1fac6,
+                0x1fac7,
+                0x1fac8,
+                0x1fac9,
+                0x1faca,
+                0x1facb,
+                0x1facc,
+                0x1facd,
+                0x1face,
+                0x1facf,
+                
+                0x1fad7,
+                0x1fad8,
+                0x1fad9,
+                0x1fada,
+                0x1fadb,
+                0x1fadc,
+                0x1fadd,
+                0x1fade,
+                0x1fadf,
+                0x1fae0,
+                0x1fae1,
+                0x1fae2,
+                0x1fae3,
+                0x1fae4,
+                0x1fae5,
+                0x1fae6,
+                0x1fae7,
+                0x1fae8,
+                0x1fae9,
+                0x1faea,
+                0x1faeb,
+                0x1faec,
+                0x1faed,
+                0x1faee,
+                0x1faef,
+                0x1faf0,
+                0x1faf1,
+                0x1faf2,
+                0x1faf3,
+                0x1faf4,
+                0x1faf5,
+                0x1faf6,
+                0x1faf7,
+                0x1faf8,
+                0x1faf9,
+                0x1fafa,
+                0x1fafb,
+                0x1fafc,
+                0x1fafd,
+                0x1fafe,
+                0x1faff,
             ]
         }
     }
@@ -347,7 +408,8 @@ extension Unicode.Block {
     ///  3. Flattening an array of ranges would increase complexity – see `flatMap(_:)`.
     var nonEmoji: [UInt32] {
         switch self {
-        case .emoticons:
+        case .emoticons,
+             .symbolsAndPictographsExtendedA:
             // These blocks don't contain any characters considered not to be emoji.
             return []
             
@@ -362,27 +424,37 @@ extension Unicode.Block {
                 0x260b,
                 0x260c,
                 0x260d,
+                
                 0x260f,
                 0x2610,
+                
                 0x2612,
                 0x2613,
+                
                 0x2616,
                 0x2617,
+                
                 0x2619,
                 0x261a,
                 0x261b,
                 0x261c,
+                
                 0x261e,
                 0x261f,
+                
                 0x2621,
+                
                 0x2624,
                 0x2625,
+                
                 0x2627,
                 0x2628,
                 0x2629,
+                
                 0x262b,
                 0x262c,
                 0x262d,
+                
                 0x2630,
                 0x2631,
                 0x2632,
@@ -391,17 +463,21 @@ extension Unicode.Block {
                 0x2635,
                 0x2636,
                 0x2637,
+                
                 0x263b,
                 0x263c,
                 0x263d,
                 0x263e,
                 0x263f,
+                
                 0x2641,
+                
                 0x2643,
                 0x2644,
                 0x2645,
                 0x2646,
                 0x2647,
+                
                 0x2654,
                 0x2655,
                 0x2656,
@@ -413,11 +489,14 @@ extension Unicode.Block {
                 0x265c,
                 0x265d,
                 0x265e,
-                0x265f,
+                
                 0x2661,
                 0x2662,
+                
                 0x2664,
+                
                 0x2667,
+                
                 0x2669,
                 0x266a,
                 0x266b,
@@ -436,8 +515,10 @@ extension Unicode.Block {
                 0x2678,
                 0x2679,
                 0x267a,
+                
                 0x267c,
                 0x267d,
+                
                 0x2680,
                 0x2681,
                 0x2682,
@@ -456,23 +537,29 @@ extension Unicode.Block {
                 0x268f,
                 0x2690,
                 0x2691,
+                
                 0x2698,
+                
                 0x269a,
+                
                 0x269d,
                 0x269e,
                 0x269f,
+                
                 0x26a2,
                 0x26a3,
                 0x26a4,
                 0x26a5,
                 0x26a6,
-                0x26a7,
+                
                 0x26a8,
                 0x26a9,
+                
                 0x26ac,
                 0x26ad,
                 0x26ae,
                 0x26af,
+                
                 0x26b2,
                 0x26b3,
                 0x26b4,
@@ -484,20 +571,26 @@ extension Unicode.Block {
                 0x26ba,
                 0x26bb,
                 0x26bc,
+                
                 0x26bf,
                 0x26c0,
                 0x26c1,
                 0x26c2,
                 0x26c3,
+                
                 0x26c6,
                 0x26c7,
+                
                 0x26c9,
                 0x26ca,
                 0x26cb,
                 0x26cc,
                 0x26cd,
+                
                 0x26d0,
+                
                 0x26d2,
+                
                 0x26d5,
                 0x26d6,
                 0x26d7,
@@ -518,14 +611,18 @@ extension Unicode.Block {
                 0x26e6,
                 0x26e7,
                 0x26e8,
+                
                 0x26eb,
                 0x26ec,
                 0x26ed,
                 0x26ee,
                 0x26ef,
+                
                 0x26f6,
+                
                 0x26fb,
                 0x26fc,
+                
                 0x26fe,
                 0x26ff
             ]
@@ -533,30 +630,40 @@ extension Unicode.Block {
             return [
                 0x2700,
                 0x2701,
+                
                 0x2703,
                 0x2704,
+                
                 0x2706,
                 0x2707,
+                
                 0x270e,
+                
                 0x2710,
                 0x2711,
+                
                 0x2713,
+                
                 0x2715,
+                
                 0x2717,
                 0x2718,
                 0x2719,
                 0x271a,
                 0x271b,
                 0x271c,
+                
                 0x271e,
                 0x271f,
                 0x2720,
+                
                 0x2722,
                 0x2723,
                 0x2724,
                 0x2725,
                 0x2726,
                 0x2727,
+                
                 0x2729,
                 0x272a,
                 0x272b,
@@ -567,6 +674,7 @@ extension Unicode.Block {
                 0x2730,
                 0x2731,
                 0x2732,
+                
                 0x2735,
                 0x2736,
                 0x2737,
@@ -582,18 +690,24 @@ extension Unicode.Block {
                 0x2741,
                 0x2742,
                 0x2743,
+                
                 0x2745,
                 0x2746,
+                
                 0x2748,
                 0x2749,
                 0x274a,
                 0x274b,
+                
                 0x274d,
+                
                 0x274f,
                 0x2750,
                 0x2751,
                 0x2752,
+                
                 0x2756,
+                
                 0x2758,
                 0x2759,
                 0x275a,
@@ -605,6 +719,7 @@ extension Unicode.Block {
                 0x2760,
                 0x2761,
                 0x2762,
+                
                 0x2765,
                 0x2766,
                 0x2767,
@@ -653,6 +768,7 @@ extension Unicode.Block {
                 0x2792,
                 0x2793,
                 0x2794,
+                
                 0x2798,
                 0x2799,
                 0x279a,
@@ -662,6 +778,7 @@ extension Unicode.Block {
                 0x279e,
                 0x279f,
                 0x27a0,
+                
                 0x27a2,
                 0x27a3,
                 0x27a4,
@@ -676,6 +793,7 @@ extension Unicode.Block {
                 0x27ad,
                 0x27ae,
                 0x27af,
+                
                 0x27b1,
                 0x27b2,
                 0x27b3,
@@ -695,15 +813,22 @@ extension Unicode.Block {
             return [
                 0x1f322,
                 0x1f323,
+                
                 0x1f394,
                 0x1f395,
+                
                 0x1f398,
+                
                 0x1f39c,
                 0x1f39d,
+                
                 0x1f3f1,
                 0x1f3f2,
+                
                 0x1f3f6,
+                
                 0x1f4fe,
+                
                 0x1f53e,
                 0x1f53f,
                 0x1f540,
@@ -715,7 +840,9 @@ extension Unicode.Block {
                 0x1f546,
                 0x1f547,
                 0x1f548,
+                
                 0x1f54f,
+                
                 0x1f568,
                 0x1f569,
                 0x1f56a,
@@ -723,8 +850,10 @@ extension Unicode.Block {
                 0x1f56c,
                 0x1f56d,
                 0x1f56e,
+                
                 0x1f571,
                 0x1f572,
+                
                 0x1f57b,
                 0x1f57c,
                 0x1f57d,
@@ -737,14 +866,18 @@ extension Unicode.Block {
                 0x1f584,
                 0x1f585,
                 0x1f586,
+                
                 0x1f588,
                 0x1f589,
+                
                 0x1f58e,
                 0x1f58f,
+                
                 0x1f591,
                 0x1f592,
                 0x1f593,
                 0x1f594,
+                
                 0x1f597,
                 0x1f598,
                 0x1f599,
@@ -758,8 +891,10 @@ extension Unicode.Block {
                 0x1f5a1,
                 0x1f5a2,
                 0x1f5a3,
+                
                 0x1f5a6,
                 0x1f5a7,
+                
                 0x1f5a9,
                 0x1f5aa,
                 0x1f5ab,
@@ -768,6 +903,7 @@ extension Unicode.Block {
                 0x1f5ae,
                 0x1f5af,
                 0x1f5b0,
+                
                 0x1f5b3,
                 0x1f5b4,
                 0x1f5b5,
@@ -777,11 +913,13 @@ extension Unicode.Block {
                 0x1f5b9,
                 0x1f5ba,
                 0x1f5bb,
+                
                 0x1f5bd,
                 0x1f5be,
                 0x1f5bf,
                 0x1f5c0,
                 0x1f5c1,
+                
                 0x1f5c5,
                 0x1f5c6,
                 0x1f5c7,
@@ -794,6 +932,7 @@ extension Unicode.Block {
                 0x1f5ce,
                 0x1f5cf,
                 0x1f5d0,
+                
                 0x1f5d4,
                 0x1f5d5,
                 0x1f5d6,
@@ -802,22 +941,28 @@ extension Unicode.Block {
                 0x1f5d9,
                 0x1f5da,
                 0x1f5db,
+                
                 0x1f5df,
                 0x1f5e0,
+                
                 0x1f5e2,
+                
                 0x1f5e4,
                 0x1f5e5,
                 0x1f5e6,
                 0x1f5e7,
+                
                 0x1f5e9,
                 0x1f5ea,
                 0x1f5eb,
                 0x1f5ec,
                 0x1f5ed,
                 0x1f5ee,
+                
                 0x1f5f0,
                 0x1f5f1,
                 0x1f5f2,
+                
                 0x1f5f4,
                 0x1f5f5,
                 0x1f5f6,
@@ -872,36 +1017,37 @@ extension Unicode.Block {
 //
 //   INFORMATION REGARDING THIS FILE
 //
-// - Version of the Unicode® Standard:      11.0
-// - Date checked:                          July 6, 2019
+// - Version of the Unicode® Standard:      13.0
+// - Date checked:                          June 4, 2020
 //
-// As of the above version there are 1210 complete base characters (singletons) that can be
-// represented as emoji, and an additional 38 incomplete singletons, totaling 1248 code points.
+// As of the above version there are 1329 complete base characters (singletons) that can be
+// represented as emoji, and an additional 38 incomplete singletons, totaling 1367 code points.
 //
 // There are six blocks that are mainly used for emoji, so the ranges of these blocks are used as a
 // first-level validation to check whether a character is emoji or not. These blocks and the ranges
 // of their code points are:
 //
-//      #   Name                                    Range                   Count / Block   Added
-//      1.  Miscellaneous Symbols                   U+ 2600...U+ 26ff          80 / 256         -
-//      2.  Dingbats                                U+ 2700...U+ 27bf          33 / 192         -
-//      3.  Miscellaneous Symbols And Pictographs   U+1f300...U+1f5ff         637 / 768         -
-//      4.  Emoticons                               U+1f600...U+1f64f          80 /  80         -
-//      5.  Transport And Map Symbols               U+1f680...U+1f6ff          95 / 128         1
-//      6.  Supplemental Symbols And Pictographs    U+1f900...U+1f9ff         199 / 256        65
-//                                                                           ----            ----
-//                                                                           1124              66
+//      #   Name                                    Range                   Count / Block   Unassigned
+//      1.  Miscellaneous Symbols                   U+ 2600...U+ 26ff          83 / 256      0
+//      2.  Dingbats                                U+ 2700...U+ 27bf          33 / 192      0
+//      3.  Miscellaneous Symbols And Pictographs   U+1f300...U+1f5ff         637 / 768      0
+//      4.  Emoticons                               U+1f600...U+1f64f          80 /  80      0
+//      5.  Transport And Map Symbols               U+1f680...U+1f6ff         101 / 128     14
+//      6.  Supplemental Symbols And Pictographs    U+1f900...U+1f9ff         240 / 256      2
+//      7.  Symbols And Pictographs Extended-A      U+1fa70...U+1faff          57 / 144     87
+//                                                                           ----
+//                                                                           1231
 //
 //
-// The above blocks contain 1124 emoji in total, which leaves 124 emoji outside of these ranges.
+// The above blocks contain 1231 emoji in total, which leaves 136 emoji outside of these ranges.
 //
 // Some of these blocks contain unassigned characters or characters not considered to be emoji. The
 // values of these code points are listed in the appendices [1] and [2] below. The Emoticons block
 // is currently the only one fully consisting of emoji.
 //
-// Of the 124 emoji characters that are not found in the above blocks, 38 are incomplete singletons
-// (26 regional indicator symbols and 12 keycap base characters). The remaining 86 characters are
-// found in various other blocks. All of these 124 additional characters are listed in appendix [3]
+// Of the 136 emoji characters that are not found in the above blocks, 38 are incomplete singletons
+// (26 regional indicator symbols and 12 keycap base characters). The remaining 98 characters are
+// found in various other blocks. All of these 136 additional characters are listed in appendix [3]
 // below.
 //
 //
@@ -916,25 +1062,28 @@ extension Unicode.Block {
 //
 // 4. Emoticons - 0 unassigned characters.
 //
-// 5. Transport And Map Symbols - 20 unassigned characters.
-//    0x1f6d5...0x1f6df,
+// 5. Transport And Map Symbols - 14 unassigned characters.
+//    0x1f6d8...0x1f6df,
 //    0x1f6ed...0x1f6ef,
-//    0x1f6fa...0x1f6ff
+//    0x1f6fd...0x1f6ff
 //
-// 6. Supplemental Symbols And Pictographs - 43 unassigned characters.
-//    0x1f90c...0x1f90f,
-//    0x1f93f,
-//    0x1f971...0x1f972,
-//    0x1f977...0x1f979,
-//    0x1f97b,
-//    0x1f9a3...0x1f9af,
-//    0x1f9ba...0x1f9bf,
-//    0x1f9c3...0x1f9cf
+// 6. Supplemental Symbols And Pictographs - 2 unassigned characters.
+//    0x1f979,
+//    0x1f9cc
+//
+// 7. Symbols And Pictographs Extended-A - 87 unassigned characters.
+//    0x1fa75...0x1fa77,
+//    0x1fa7b...0x1fa7f,
+//    0x1fa87...0x1fa8f,
+//    0x1faa9...0x1faaf,
+//    0x1fab7...0x1fabf,
+//    0x1fac3...0x1facf,
+//    0x1fad7...0x1faff,
 //
 //
 // [2] - Non-emoji characters.
 //
-// 1. Miscellaneous Symbols - 175 non-emoji characters.
+// 1. Miscellaneous Symbols - 173 non-emoji characters.
 //    0x2605...0x260d,
 //    0x260f...0x2610,
 //    0x2612...0x2613,
@@ -949,7 +1098,7 @@ extension Unicode.Block {
 //    0x263b...0x263f,
 //    0x2641,
 //    0x2643...0x2647,
-//    0x2654...0x265f,
+//    0x2654...0x265e,
 //    0x2661...0x2662,
 //    0x2664,
 //    0x2667,
@@ -959,7 +1108,8 @@ extension Unicode.Block {
 //    0x2698,
 //    0x269a,
 //    0x269d...0x269f,
-//    0x26a2...0x26a9,
+//    0x26a2...0x26a6,
+//    0x26a8...0x26a9,
 //    0x26ac...0x26af,
 //    0x26b2...0x26bc,
 //    0x26bf...0x26c3,
@@ -1037,8 +1187,11 @@ extension Unicode.Block {
 //    0x1f6f1...0x1f6f2
 //
 // 6. Supplemental Symbols And Pictographs - 14 non-emoji characters.
+//    0x1f900...0x1f90b,
 //    0x1f93b,
 //    0x1f946
+//
+// 7. Symbols And Pictographs Extended-A - 0 non-emoji characters.
 //
 //
 //
@@ -1117,4 +1270,7 @@ extension Unicode.Block {
 //    0x1f22f,
 //    0x1f232...0x1f23a,
 //    0x1f250...0x1f251
+//
+// p. Geometric Shapes Extended - 12 characters.
+//    0x1f7e0...0x1f7eb
 //
