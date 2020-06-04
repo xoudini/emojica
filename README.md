@@ -38,10 +38,10 @@ ready to go.
 
 ## Requirements
 
-+ Xcode 8.3
-+ iOS 10.0+
-   * _Lower versions haven't been tested properly, although the framework may
-      run without issues on a lower version._
++ Xcode 11
++ iOS 13.0+
+   * _Lower versions haven't been tested, although the framework may run without
+      issues on a lower version._
 + Swift 5
    * _Using the framework in an Objective-C project may require some
       modifications to the source. Support for Objective-C will possibly be
