@@ -51,7 +51,7 @@ ready to go.
 
 ## Installation
 
-### CocoaPods
+### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 
 1. Add the pod to your `Podfile`:
 
@@ -64,6 +64,20 @@ ready to go.
 
  ```sh
  $ cd /Path/To/Your/Project/ && pod install
+ ```
+
+### [Carthage](https://github.com/Carthage/Carthage)
+
+1. Add this to your `Cartfile`:
+
+```
+github "xoudini/emojica"
+```
+
+2. Navigate into your project directory and install/update:
+
+ ```sh
+ $ cd /Path/To/Your/Project/ && carthage update
  ```
 
 ###   Manual installation
