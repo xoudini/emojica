@@ -80,7 +80,7 @@ github "xoudini/emojica"
  $ cd /Path/To/Your/Project/ && carthage update
  ```
 
-###   Manual installation
+### Manual installation
 
 1. Clone the repository, and drag `Emojica.xcodeproj` into your project
     hierarchy in Xcode.
@@ -293,15 +293,22 @@ $ sh rename.sh
 
 ## Contact
 
-You can find me on Twitter at [@xoudini](https://twitter.com/xoudini),
-or send me electronic mail at [main@xoudini.com](mailto:main@xoudini.com).
-
 Feedback and questions are welcome, create an
 [__Issue__](https://github.com/xoudini/emojica/issues) for bugs, problems, and
 potential feature requests.
 
-If you end up using Emojica in one of your projects, hit me up. I'd love to
-check it out!
+If you end up using this framework in one of your projects, feel free to let me
+know, e.g. on [Twitter](https://twitter.com/xoudini).
+
+
+
+## Contributions
+
+The list of contributors to this project can be found
+[here](https://github.com/xoudini/emojica/graphs/contributors).
+
+If you would like to contribute, don't hesitate to open an issue or a pull
+request.
 
 
 
