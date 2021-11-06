@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// A class to convert the standard emoji representation into something more
 /// customised. Images not provided.
