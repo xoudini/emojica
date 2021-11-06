@@ -80,6 +80,15 @@ github "xoudini/emojica"
  $ cd /Path/To/Your/Project/ && carthage update
  ```
 
+### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+Open your project use Xcode.
+Click `File` -> `Add Packages`, enter repository url.
+
+```
+https://github.com/xoudini/emojica
+```
+
 ### Manual installation
 
 1. Clone the repository, and drag `Emojica.xcodeproj` into your project
