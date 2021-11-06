@@ -20,6 +20,7 @@ let package = Package(
         .testTarget(
             name: "EmojicaTests",
             dependencies: ["Emojica"],
-            path: "EmojicaTests"),
+            path: "EmojicaTests",
+            exclude: ["Info.plist"]),
     ]
 )
