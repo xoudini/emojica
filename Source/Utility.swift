@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Simple, generic stack implementation.
 internal class Stack<T> {

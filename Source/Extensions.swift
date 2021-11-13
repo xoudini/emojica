@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension UITextView {
     public var emojicaText: NSAttributedString {
