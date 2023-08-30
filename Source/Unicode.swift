@@ -197,6 +197,8 @@ struct Unicode {
             0x1f7e9,    //
             0x1f7ea,    //
             0x1f7eb,    //
+            
+            0x1F7F0,    //
         ]
     }
     
@@ -272,7 +274,8 @@ extension Unicode.Block {
         case .miscellaneousSymbols,
              .dingbats,
              .miscellaneousSymbolsAndPictographs,
-             .emoticons:
+             .emoticons,
+             .supplementalSymbolsAndPictographs:
             // These blocks don't contain any unassigned characters.
             return []
             
@@ -283,9 +286,6 @@ extension Unicode.Block {
                 0x1f6da,
                 0x1f6db,
                 0x1f6dc,
-                0x1f6dd,
-                0x1f6de,
-                0x1f6df,
                 
                 0x1f6ed,
                 0x1f6ee,
@@ -295,20 +295,12 @@ extension Unicode.Block {
                 0x1f6fe,
                 0x1f6ff
             ]
-        case .supplementalSymbolsAndPictographs:
-            return [
-                0x1f979,
-
-                0x1f9cc,
-            ]
         case .symbolsAndPictographsExtendedA:
             return [
                 0x1fa75,
                 0x1fa76,
                 0x1fa77,
                 
-                0x1fa7b,
-                0x1fa7c,
                 0x1fa7d,
                 0x1fa7e,
                 0x1fa7f,
@@ -323,27 +315,16 @@ extension Unicode.Block {
                 0x1fa8e,
                 0x1fa8f,
                 
-                0x1faa9,
-                0x1faaa,
-                0x1faab,
-                0x1faac,
                 0x1faad,
                 0x1faae,
                 0x1faaf,
                 
-                0x1fab7,
-                0x1fab8,
-                0x1fab9,
-                0x1faba,
                 0x1fabb,
                 0x1fabc,
                 0x1fabd,
                 0x1fabe,
                 0x1fabf,
                 
-                0x1fac3,
-                0x1fac4,
-                0x1fac5,
                 0x1fac6,
                 0x1fac7,
                 0x1fac8,
@@ -355,23 +336,13 @@ extension Unicode.Block {
                 0x1face,
                 0x1facf,
                 
-                0x1fad7,
-                0x1fad8,
-                0x1fad9,
                 0x1fada,
                 0x1fadb,
                 0x1fadc,
                 0x1fadd,
                 0x1fade,
                 0x1fadf,
-                0x1fae0,
-                0x1fae1,
-                0x1fae2,
-                0x1fae3,
-                0x1fae4,
-                0x1fae5,
-                0x1fae6,
-                0x1fae7,
+
                 0x1fae8,
                 0x1fae9,
                 0x1faea,
@@ -380,13 +351,7 @@ extension Unicode.Block {
                 0x1faed,
                 0x1faee,
                 0x1faef,
-                0x1faf0,
-                0x1faf1,
-                0x1faf2,
-                0x1faf3,
-                0x1faf4,
-                0x1faf5,
-                0x1faf6,
+
                 0x1faf7,
                 0x1faf8,
                 0x1faf9,
@@ -1018,10 +983,10 @@ extension Unicode.Block {
 //   INFORMATION REGARDING THIS FILE
 //
 // - Version of the Unicode® Standard:      13.0
-// - Date checked:                          June 4, 2020
+// - Date checked:                          Aug 30, 2023
 //
-// As of the above version there are 1329 complete base characters (singletons) that can be
-// represented as emoji, and an additional 38 incomplete singletons, totaling 1367 code points.
+// As of the above version there are 1451 complete base characters (singletons) that can be
+// represented as emoji, and an additional 38 incomplete singletons, totaling 1489 code points.
 //
 // There are six blocks that are mainly used for emoji, so the ranges of these blocks are used as a
 // first-level validation to check whether a character is emoji or not. These blocks and the ranges
@@ -1032,14 +997,14 @@ extension Unicode.Block {
 //      2.  Dingbats                                U+ 2700...U+ 27bf          33 / 192      0
 //      3.  Miscellaneous Symbols And Pictographs   U+1f300...U+1f5ff         637 / 768      0
 //      4.  Emoticons                               U+1f600...U+1f64f          80 /  80      0
-//      5.  Transport And Map Symbols               U+1f680...U+1f6ff         101 / 128     14
-//      6.  Supplemental Symbols And Pictographs    U+1f900...U+1f9ff         240 / 256      2
-//      7.  Symbols And Pictographs Extended-A      U+1fa70...U+1faff          57 / 144     87
+//      5.  Transport And Map Symbols               U+1f680...U+1f6ff         118 / 128     10
+//      6.  Supplemental Symbols And Pictographs    U+1f900...U+1f9ff         256 / 256      0
+//      7.  Symbols And Pictographs Extended-A      U+1fa70...U+1faff         107 / 144     37
 //                                                                           ----
-//                                                                           1231
+//                                                                           1314
 //
 //
-// The above blocks contain 1231 emoji in total, which leaves 136 emoji outside of these ranges.
+// The above blocks contain 1451 emoji in total, which leaves 135 emoji outside of these ranges.
 //
 // Some of these blocks contain unassigned characters or characters not considered to be emoji. The
 // values of these code points are listed in the appendices [1] and [2] below. The Emoticons block
@@ -1062,23 +1027,23 @@ extension Unicode.Block {
 //
 // 4. Emoticons - 0 unassigned characters.
 //
-// 5. Transport And Map Symbols - 14 unassigned characters.
-//    0x1f6d8...0x1f6df,
+// 5. Transport And Map Symbols - 10 unassigned characters.
+//    0x1f6d8...0x1f6dc,
 //    0x1f6ed...0x1f6ef,
 //    0x1f6fd...0x1f6ff
 //
-// 6. Supplemental Symbols And Pictographs - 2 unassigned characters.
-//    0x1f979,
-//    0x1f9cc
+// 6. Supplemental Symbols And Pictographs - 0 unassigned characters.
 //
-// 7. Symbols And Pictographs Extended-A - 87 unassigned characters.
+// 7. Symbols And Pictographs Extended-A - 37 unassigned characters.
 //    0x1fa75...0x1fa77,
-//    0x1fa7b...0x1fa7f,
+//    0x1fa7d...0x1fa7f,
 //    0x1fa87...0x1fa8f,
-//    0x1faa9...0x1faaf,
-//    0x1fab7...0x1fabf,
-//    0x1fac3...0x1facf,
-//    0x1fad7...0x1faff,
+//    0x1faad...0x1faaf,
+//    0x1fabb...0x1fabf,
+//    0x1fac6...0x1facf,
+//    0x1fada...0x1fadf,
+//    0x1fae8...0x1faef,
+//    0x1faf7...0x1faff
 //
 //
 // [2] - Non-emoji characters.
@@ -1271,6 +1236,7 @@ extension Unicode.Block {
 //    0x1f232...0x1f23a,
 //    0x1f250...0x1f251
 //
-// p. Geometric Shapes Extended - 12 characters.
-//    0x1f7e0...0x1f7eb
+// p. Geometric Shapes Extended - 13 characters.
+//    0x1f7e0...0x1f7eb,
+//    0x1F7F0
 //
